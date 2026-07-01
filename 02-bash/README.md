@@ -20,12 +20,15 @@ Bash helped me automate everyday tasks using simple scripts. This module focused
 ---
 
 ## Folder Structure
+
+```
 02-bash/
 ├── notes/
 ├── labs/
-│ └── bash-battle-arena/
+│   └── bash-battle-arena/
 ├── projects/
 └── README.md
+```
 
 ---
 
