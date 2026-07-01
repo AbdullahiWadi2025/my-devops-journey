@@ -1,34 +1,67 @@
-# 02 - Bash Scripting
+# 02 - Bash
 
-Automate everything. Bash scripting turns repetitive tasks into one-click solutions.
+Bash helped me automate everyday tasks using simple scripts. This module focused on writing commands that save time, reduce repetition, and make working in Linux more efficient.
 
-## What I have Learned
+---
 
-- Variables and data types
-- Conditionals (if/else)
-- Loops (for, while)
+## What I Covered
+
+- Bash fundamentals
+- Variables
+- Loops
 - Functions
-- Input/output handling
-- Error handling
-- Script best practices
+- User input
+- Conditional statements
+- File operations
+- Argument parsing
+- System automation basics
+- Debugging and script execution
+
+---
 
 ## Folder Structure
-
-```
 02-bash/
-├── notes/       # Your notes from lessons
-├── labs/        # Completed lab exercises
-└── projects/    # Hands-on projects
-```
+├── notes/
+├── labs/
+│ └── bash-battle-arena/
+├── projects/
+└── README.md
 
-## Suggested Projects
+---
 
-- [ ] Build a deployment script
-- [ ] Create a health check script for services
-- [ ] Automate log cleanup with retention policies
-- [ ] Build a CLI menu system
+## Labs
 
-## Resources
+### Bash Battle Arena
 
-- [Bash Reference Manual](https://www.gnu.org/software/bash/manual/)
-- [ShellCheck](https://www.shellcheck.net/) – Lint your scripts
+A structured multi-level scripting lab that helped me build core Bash skills step by step.
+
+It includes challenges such as:
+
+- Creating directories and files
+- Using loops to generate outputs
+- Checking if files exist
+- Copying and moving files between directories
+- Sorting files by size
+- Searching for words in multiple files
+- Monitoring directory changes
+- Working with arguments and user input
+- Building backup systems with rotation
+- Parsing configuration files
+- Creating menu-driven scripts for automation
+
+This lab simulates real-world Linux and DevOps scripting tasks.
+
+---
+
+## Projects
+
+- Calculator (performs arithmetic operations)
+- File Operations (read/write and basic file handling)
+- Backup Script (timestamped backups and rotation)
+- Permissions Checker (checks file existence and permissions)
+
+---
+
+## Status
+
+Completed
