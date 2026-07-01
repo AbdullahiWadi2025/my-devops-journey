@@ -65,7 +65,3 @@ This project demonstrates practical Bash scripting techniques used in Linux syst
 
 ---
 
-## 👨‍💻 Author
-
-Abdullahi Wadi
-
