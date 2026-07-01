@@ -2,7 +2,7 @@
 
 Automate everything. Bash scripting turns repetitive tasks into one-click solutions.
 
-## What You'll Learn
+## What I have Learned
 
 - Variables and data types
 - Conditionals (if/else)
