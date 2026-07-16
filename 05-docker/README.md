@@ -1,69 +1,57 @@
 # 05 - Docker
 
-Containers changed everything. Docker packages and runs applications consistently.
+Docker introduced me to **containerization** and building applications that run consistently across different environments. This module focuses on creating, managing, and deploying containerized applications while understanding how services communicate and work together.
 
-## What You'll Learn
+Through hands-on labs and projects, I learned how to package applications into containers, manage multi-container environments, and use Docker Compose to automate deployments.
 
-- Container vs VM concepts
+## What I Covered
+
+- Docker fundamentals
 - Images and containers
-- Dockerfile syntax
-- Building images
-- Docker Compose for multi-container apps
-- Volumes and networking
-- Best practices for production images
+- Dockerfiles
+- Building custom Docker images
+- Running and managing containers
+- Docker Compose
+- Multi-container applications
+- Container networking
+- Environment variables
+- Docker volumes and persistent storage
+- Container logs and troubleshooting
+- Scaling containers
+- NGINX reverse proxy with Docker
+- Service communication between containers
 
 ## Folder Structure
 
 ```
 05-docker/
-├── notes/       # Your notes from lessons
-├── labs/        # Completed lab exercises
-└── projects/    # Hands-on projects
+├── notes/
+├── labs/
+├── projects/
+│   └── redis-flask-app/
+└── screenshots/
 ```
 
-## Suggested Projects
+## Projects
 
-- [ ] Containerise a web application
-- [ ] Create a multi-container app with Docker Compose
-- [ ] Build a minimal production image (multi-stage build)
-- [ ] Set up a local development environment with Docker
+### Flask + Redis + NGINX Multi-Container Application
 
-## Key Commands
+Built a containerized web application using:
 
-```bash
-docker build -t name .      # Build image
-docker run -d -p 80:80 img  # Run container
-docker ps                   # List running containers
-docker logs <container>     # View logs
-docker exec -it <c> sh      # Shell into container
-docker-compose up -d        # Start compose stack
-docker-compose down         # Stop compose stack
-```
+- Flask as the application server
+- Redis for storing visitor count data
+- NGINX as a reverse proxy and load balancer
+- Docker Compose for managing multiple services
 
-## Dockerfile Best Practices
+The project includes:
 
-```dockerfile
-# Use specific tags, not :latest
-FROM node:20-alpine
+- Multi-container architecture
+- Docker Compose deployment
+- Container networking
+- Persistent Redis storage
+- Environment variable configuration
+- Multiple Flask containers behind NGINX
 
-# Set working directory
-WORKDIR /app
+## Status
 
-# Copy package files first (layer caching)
-COPY package*.json ./
-RUN npm ci --only=production
-
-# Copy source code
-COPY . .
-
-# Run as non-root user
-USER node
-
-# Define entrypoint
-CMD ["node", "server.js"]
-```
-
-## Resources
-
-- [Docker Documentation](https://docs.docker.com/)
-- [Dockerfile Reference](https://docs.docker.com/engine/reference/builder/)
+Completed
