@@ -168,18 +168,18 @@ redis-flask-app/
 
 ## Homepage
 
---- ![alt text](image.png)
+![alt text](image.png)
 ---
 
 ## Visitor Counter Dashboard
 
---- ![alt text](image-1.png)
+![alt text](image-1.png)
 
 ---
 
 ## Application Logs
 
---- ![alt text](image-2.png)
+![alt text](image-2.png)
 ---
 
 Clone the repository:
