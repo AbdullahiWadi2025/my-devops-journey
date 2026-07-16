@@ -1,4 +1,4 @@
-# 🚀 My DevOps Journey
+# My DevOps Journey
 
 **Linux • Bash • Git • Networking • Docker • AWS • Terraform • CI/CD • Kubernetes**
 
@@ -10,7 +10,7 @@ Every project includes its own README with architecture diagrams, screenshots, s
 
 ---
 
-# 📚 Modules
+#  Modules
 
 | #  | Module     | Topics                                                     | Status         |
 | -- | ---------- | ---------------------------------------------------------- | -------------- |
@@ -26,7 +26,7 @@ Every project includes its own README with architecture diagrams, screenshots, s
 
 ---
 
-# 🚀 Featured Projects
+#  Featured Projects
 
 * 🐳 **Flask + Redis + NGINX Multi-Container Application**
 * ☁️ AWS Cloud Projects *(Coming Soon)*
@@ -38,7 +38,7 @@ More projects will be added as I continue progressing through my DevOps journey.
 
 ---
 
-# 📂 Repository Structure
+#  Repository Structure
 
 ```text
 my-devops-journey/
@@ -63,7 +63,7 @@ Each module contains:
 
 ---
 
-# 📈 Progress
+#  Progress
 
 | Module     | Status         |
 | ---------- | -------------- |
@@ -79,7 +79,7 @@ Each module contains:
 
 ---
 
-# 🛠️ Current Skills
+#  Current Skills
 
 * Linux
 * Bash Scripting
