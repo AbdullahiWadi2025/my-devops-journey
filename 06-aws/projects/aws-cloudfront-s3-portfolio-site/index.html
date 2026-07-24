@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio website for Abdullahi Wadi — Cloud Support Associate, IT & Cybersecurity." />
+  <meta name="author" content="Abdullahi Wadi" />
+  <title>Abdullahi Wadi — Portfolio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ctext y='20' font-size='20'%3E☁️%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root{--accent:#38bdf8;--muted:#cbd5e1;--max-width:1100px;--radius:14px;}
+    body{margin:0;font-family:Inter,system-ui,sans-serif;color:#1e293b;line-height:1.6;overflow-x:hidden;
+      background:linear-gradient(180deg,#e0f2fe,#bae6fd);
+    }
+
+    /* Cloud animation */
+    .cloud{
+      position:fixed;
+      background:white;
+      border-radius:50%;
+      opacity:0.7;
+      animation: drift linear infinite;
+      z-index:-1;
+    }
+    .cloud:before,.cloud:after{
+      content:"";
+      position:absolute;
+      background:white;
+      border-radius:50%;
+    }
+    .cloud1{width:120px;height:60px;top:50px;left:-200px;animation-duration:60s;}
+    .cloud1:before{width:60px;height:60px;top:-20px;left:10px;}
+    .cloud1:after{width:80px;height:80px;top:-30px;left:40px;}
+
+    .cloud2{width:200px;height:80px;top:150px;left:-300px;animation-duration:100s;opacity:0.6;}
+    .cloud2:before{width:100px;height:100px;top:-40px;left:30px;}
+    .cloud2:after{width:120px;height:120px;top:-50px;left:80px;}
+
+    .cloud3{width:150px;height:70px;top:300px;left:-250px;animation-duration:80s;opacity:0.5;}
+    .cloud3:before{width:70px;height:70px;top:-25px;left:20px;}
+    .cloud3:after{width:90px;height:90px;top:-35px;left:50px;}
+
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to { transform: translateX(200%); }
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:1.5rem;position:relative;z-index:1}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+    h1{margin:0;font-size:1.5rem;color:#0f172a}
+    nav a{margin-left:1rem;color:#334155;text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--accent)}
+    section{margin-bottom:3rem}
+    h2{margin-bottom:1rem;color:#0e7490}
+    .card{background:rgba(255,255,255,0.85);padding:1.25rem;border-radius:var(--radius);margin-bottom:1rem;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+    .muted{color:#475569}
+    footer{border-top:1px solid rgba(0,0,0,0.05);padding-top:1rem;text-align:center;color:#475569}
+    a{color:#0284c7;font-weight:600;text-decoration:none}
+    a:hover{text-decoration:underline}
+    a img{vertical-align:middle;margin-right:5px;}
+  </style>
+</head>
+<body>
+  <!-- Clouds -->
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <div class="container">
+    <header>
+      <h1>Abdullahi Wadi</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="card">
+        <p>Cloud Support Associate with hands-on experience in AWS services, cloud troubleshooting, and IT support. Skilled in deploying and managing AWS resources including EC2, S3, IAM, CloudWatch, and CloudTrail, while providing support for both cloud and on-prem systems.</p>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="card">
+        <h3>IT End User Support — ASML</h3>
+        <p class="muted">San Diego, CA | Present</p>
+        <ul>
+          <li>Provided Tier 1/Tier 2 IT security support to 50+ users daily, troubleshooting hardware, software, and authentication issues.</li>
+          <li>Configured encrypted drives and managed secure data migration.</li>
+          <li>Deployed and imaged 9+ computers daily (~180 per month).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>IT Support Analyst — San Diego State University</h3>
+        <p class="muted">San Diego, CA | Nov 2023 – June 2024</p>
+        <ul>
+          <li>Managed and resolved 300+ ServiceNow security tickets monthly.</li>
+          <li>Configured Mac and Windows devices for 120,000+ students.</li>
+          <li>Supported a $11M initiative implementing IT security controls.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="card">
+        <h3>AWS Security</h3>
+        <ul>
+          <li>Deployed OpenVPN on AWS EC2 with MFA for secure remote access.</li>
+          <li>Implemented automated monitoring using CloudWatch and CloudTrail.</li>
+          <li>Configured S3 bucket security controls for compliance.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Motion Detection with Python</h3>
+        <p>Developed a motion detection system using Python and Mac camera.</p>
+      </div>
+    </section>
+
+    <section id="certs">
+      <h2>Education & Certifications</h2>
+      <div class="card">
+        <p>Bachelor of Science in Management Information Systems — San Diego State University</p>
+        <ul>
+          <li>AWS Certified Solutions Architect – Associate</li>
+          <li>AWS Certified Cloud Practitioner</li>
+          <li>Google Cybersecurity Specialization</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>
+          <a href="mailto:abdulahiyerow@gmail.com">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" width="20">
+            abdulahiyerow@gmail.com
+          </a>
+        </p>
+        <p>
+          <a href="https://www.linkedin.com/in/abdullahi-wadi" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="20">
+            linkedin.com/in/abdullahi-wadi
+          </a>
+        </p>
+        <p>
+          <a href="https://github.com/AbdullahiWadi2025" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" width="20">
+            github.com/AbdullahiWadi2025
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Abdullahi Wadi. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+</html>
