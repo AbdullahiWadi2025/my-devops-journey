@@ -1,52 +1,69 @@
-# Deploy WordPress Using Terraform on AWS
+# Deploy WordPress Using Terraform on AWS 🚀
 
 ## Overview
 
-This project demonstrates how to use **Terraform Infrastructure as Code (IaC)** to deploy a complete WordPress application stack on AWS.
+This project demonstrates how to deploy a complete WordPress application stack on AWS using Terraform Infrastructure as Code (IaC).
 
-Terraform provisions the required AWS infrastructure, configures networking access, launches an Ubuntu EC2 instance, and automatically installs WordPress dependencies using EC2 User Data.
+The goal of this project was to practice provisioning real AWS infrastructure, configuring networking and security, and automating server setup using Terraform.
 
-The goal of this project was to understand how Terraform manages real cloud infrastructure from provisioning to deployment.
+Terraform creates the required AWS resources, launches an Ubuntu EC2 instance, configures security rules, and installs WordPress dependencies automatically using EC2 User Data.
 
 ---
 
 # Architecture
 
+The deployment includes:
+
 ```
-                 Internet
-                    |
-                    |
-              Security Group
-              (SSH + HTTP)
-                    |
-                    |
-              EC2 Instance
-            Ubuntu Server
-                    |
-          -------------------
-          |                 |
-       Apache             PHP
-          |
-       MariaDB
-          |
-      WordPress
+User
+ |
+ | HTTP (Port 80)
+ |
+ v
+AWS EC2 Instance
+ |
+ |-- Apache Web Server
+ |
+ |-- PHP
+ |
+ |-- MariaDB Database
+ |
+ |-- WordPress Application
 ```
 
-Terraform manages all infrastructure resources.
+Terraform manages the entire infrastructure lifecycle:
+
+```
+Terraform
+    |
+    |
+    v
+AWS Provider
+    |
+    |
+    +---- EC2 Instance
+    |
+    +---- Security Group
+    |
+    +---- Key Pair
+    |
+    +---- S3 Remote State
+```
 
 ---
 
 # Technologies Used
 
-- Terraform
-- AWS EC2
-- AWS S3 Backend
-- Ubuntu Linux
-- Apache Web Server
-- PHP
-- MariaDB
-- WordPress
-- Bash / EC2 User Data
+| Technology | Purpose |
+|------------|---------|
+| Terraform | Infrastructure as Code |
+| AWS EC2 | Compute Server |
+| AWS S3 | Terraform Remote State Storage |
+| Ubuntu | Operating System |
+| Apache | Web Server |
+| PHP | WordPress Runtime |
+| MariaDB | Database |
+| Bash | Server Automation |
 
 ---
 
@@ -54,11 +71,11 @@ Terraform manages all infrastructure resources.
 
 ## EC2 Instance
 
-Terraform creates:
+Terraform provisions:
 
-- Ubuntu Server EC2 instance
-- t2.micro instance type
-- SSH key authentication
+- Ubuntu EC2 instance
+- Instance type configuration
+- SSH access
 - Public IP address
 - Automated WordPress installation
 
@@ -68,60 +85,142 @@ Terraform creates:
 
 The security group controls inbound and outbound traffic.
 
-Inbound rules:
+### Inbound Rules
 
 | Protocol | Port | Purpose |
 |----------|------|---------|
-| TCP | 22 | SSH access |
-| TCP | 80 | HTTP web traffic |
+| TCP | 22 | SSH Access |
+| TCP | 80 | HTTP Web Traffic |
 
-Outbound traffic is allowed so the server can download updates and required packages.
+### Outbound Rules
+
+Allows outbound traffic for:
+
+- Package installation
+- Updates
+- External communication
 
 ---
 
-## S3 Remote Backend
+# Terraform Remote State
 
 Terraform state is stored remotely in Amazon S3.
 
-Example:
+Example backend configuration:
 
+```hcl
+backend "s3" {
+  bucket = "terraform-state-abdullahi"
+  key    = "terraform.tfstate"
+  region = "us-west-1"
+}
 ```
-S3 Bucket:
-terraform-state-abdullahi
 
-State File:
-wordpress/terraform.tfstate
-```
+Benefits of remote state:
 
-Using remote state allows Terraform to securely track infrastructure changes.
+- Centralized state storage
+- Prevents losing Terraform state locally
+- Allows collaboration
+- Improves infrastructure management
 
 ---
 
 # Project Structure
 
 ```
-wordpress-terraform/
+terraform-wordpress/
 
-├── backend.tf              # Remote Terraform state configuration
-├── provider.tf             # AWS provider configuration
-├── variables.tf            # Input variables
-├── terraform.tfvars        # Variable values
-├── security-group.tf       # Security group rules
-├── keypair.tf              # EC2 SSH key pair
-├── ec2.tf                  # EC2 instance configuration
-├── user-data.sh            # Automated server setup script
-├── outputs.tf              # Terraform outputs
-├── README.md               # Project documentation
-└── .gitignore              # Ignored files
+├── backend.tf
+├── provider.tf
+├── ec2.tf
+├── security-group.tf
+├── keypair.tf
+├── variables.tf
+├── outputs.tf
+├── user-data.sh
+├── README.md
+└── .terraform.lock.hcl
 ```
 
 ---
 
-# Terraform Workflow
+# Terraform Configuration
 
-## Initialize Terraform
+## Provider
 
-Downloads providers and configures the backend.
+The AWS provider allows Terraform to communicate with AWS.
+
+Example:
+
+```hcl
+provider "aws" {
+  region = "us-west-1"
+}
+```
+
+---
+
+## Variables
+
+Variables allow reusable Terraform configurations.
+
+Examples:
+
+- AWS region
+- EC2 instance type
+- AMI ID
+- Key pair name
+
+Example:
+
+```hcl
+variable "instance_type" {
+  type    = string
+  default = "t2.micro"
+}
+```
+
+---
+
+## Resources
+
+Terraform manages AWS resources using resource blocks.
+
+Example:
+
+```hcl
+resource "aws_instance" "wordpress" {
+  ami           = var.ami
+  instance_type = var.instance_type
+}
+```
+
+---
+
+# User Data Automation
+
+The EC2 instance uses a user data script to automatically configure the server.
+
+The script performs:
+
+- System updates
+- Apache installation
+- PHP installation
+- MariaDB installation
+- WordPress download
+- Database creation
+- WordPress configuration
+- Service startup
+
+This allows the server to be ready without manual configuration.
+
+---
+
+# Deployment Steps
+
+## 1. Initialize Terraform
+
+Downloads providers and initializes the backend.
 
 ```bash
 terraform init
@@ -129,19 +228,7 @@ terraform init
 
 ---
 
-## Validate Configuration
-
-Checks Terraform syntax.
-
-```bash
-terraform validate
-```
-
----
-
-## Format Terraform Files
-
-Formats Terraform configuration files.
+## 2. Format Terraform Files
 
 ```bash
 terraform fmt
@@ -149,9 +236,23 @@ terraform fmt
 
 ---
 
-## Create Terraform Plan
+## 3. Validate Configuration
 
-Shows what resources Terraform will create.
+Checks Terraform syntax.
+
+```bash
+terraform validate
+```
+
+Expected output:
+
+```
+Success! The configuration is valid.
+```
+
+---
+
+## 4. Review Deployment Plan
 
 ```bash
 terraform plan
@@ -159,78 +260,82 @@ terraform plan
 
 ---
 
-## Deploy Infrastructure
-
-Creates AWS resources.
+## 5. Deploy Infrastructure
 
 ```bash
 terraform apply
 ```
 
+Terraform creates:
+
+- EC2 instance
+- Security group
+- Key pair
+- WordPress environment
+
 ---
 
-## Destroy Infrastructure
+## 6. Access WordPress
 
-Deletes Terraform-managed resources.
+After deployment, access the application using:
+
+```
+http://<EC2-PUBLIC-IP>
+```
+
+---
+
+# Destroy Infrastructure
+
+To remove all AWS resources created by Terraform:
 
 ```bash
 terraform destroy
 ```
 
----
+This removes:
 
-# Automated Installation Using User Data
-
-The EC2 instance uses a Bash script that automatically runs during the first boot.
-
-The script:
-
-- Updates Ubuntu packages
-- Installs Apache
-- Installs PHP and required extensions
-- Installs MariaDB
-- Downloads WordPress
-- Configures WordPress files
-- Sets correct permissions
-- Starts required services
-
-This removes the need for manually configuring the server.
+- EC2 instance
+- Security group
+- Key pair
 
 ---
 
 # Terraform Concepts Practiced
 
+## Infrastructure as Code (IaC)
+
+Managed AWS infrastructure using configuration files instead of manual console setup.
+
+---
+
 ## Providers
 
-Configured AWS as the Terraform provider to communicate with AWS services.
+Used the AWS provider to communicate with AWS services.
 
 ---
 
 ## Resources
 
-Created AWS resources using Terraform:
+Created and managed:
 
-- EC2 Instance
-- Security Group
-- Key Pair
+- EC2 instances
+- Security groups
+- Key pairs
 
 ---
 
 ## Variables
 
-Used input variables for:
-
-- AWS Region
-- AMI ID
-- Instance Type
+Used variables to make Terraform configurations reusable.
 
 ---
 
 ## Outputs
 
-Displayed important deployment information:
+Returned useful information such as:
 
-- EC2 Instance ID
+- Instance ID
 - Public IP address
 - Website URL
 
@@ -238,40 +343,21 @@ Displayed important deployment information:
 
 ## Remote State
 
-Stored Terraform state remotely using Amazon S3 instead of keeping it locally.
+Stored Terraform state securely in Amazon S3.
 
 ---
 
-## Dependencies
+# Challenges Faced
 
-Terraform automatically manages resource dependencies and creates resources in the correct order.
+During this project, I practiced troubleshooting:
 
----
-
-# Deployment Result
-
-After deployment, Terraform outputs the WordPress endpoint.
-
-Example:
-
-```bash
-website_url = http://<EC2_PUBLIC_IP>
-```
-
-Opening the URL displays the WordPress setup page.
-
----
-
-# Lessons Learned
-
-Through this project I learned:
-
-- How Terraform manages AWS infrastructure
-- How Infrastructure as Code improves repeatability
-- How to configure remote Terraform state
-- How EC2 User Data automates server configuration
-- How AWS Security Groups control access
-- How to deploy applications without manual server setup
+- Terraform provider installation issues
+- AWS resource configuration
+- Security group rules
+- EC2 startup delays
+- User data execution
+- Apache and WordPress setup
+- Terraform state management
 
 ---
 
@@ -279,19 +365,12 @@ Through this project I learned:
 
 Possible improvements:
 
-- Convert infrastructure into Terraform modules
+- Add AWS RDS instead of MariaDB on EC2
 - Add Application Load Balancer
-- Move database to Amazon RDS
-- Add HTTPS using ACM certificates
-- Add Route 53 custom domain
-- Add CI/CD pipeline using GitHub Actions
-- Implement IAM roles following least privilege principles
+- Add HTTPS using AWS Certificate Manager
+- Add Route 53 domain configuration
+- Add Terraform modules
+- Add GitHub Actions CI/CD pipeline
+- Store secrets using AWS Secrets Manager
 
 ---
-
-# Author
-
-Abdullahi Wadi
-
-GitHub:
-https://github.com/AbdullahiWadi2025
