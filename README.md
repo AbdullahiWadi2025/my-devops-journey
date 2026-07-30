@@ -72,9 +72,9 @@ Each module contains:
 | Git        | ✅ Complete     |
 | Networking | ✅ Complete     |
 | Docker     | ✅ Complete     |
-| AWS        | 🚧 In Progress |
-| Terraform  | 🚧 In Progress |
-| CI/CD      | ⏳ Coming Soon  |
+| AWS        | ✅ Complete     |
+| Terraform  | ✅ Complete     |
+| CI/CD      | ✅ Complete     |
 | Kubernetes | ⏳ Coming Soon  |
 
 ---
