@@ -19,9 +19,9 @@ Every project includes its own README with architecture diagrams, screenshots, s
 | 03 | Git        | Version control and GitHub workflows                       | ✅ Complete     |
 | 04 | Networking | DNS, HTTP, TCP/IP, OSI Model                               | ✅ Complete     |
 | 05 | Docker     | Containers, Dockerfiles, Docker Compose, Networking        | ✅ Complete     |
-| 06 | AWS        | EC2, VPC, IAM, Security Groups, CloudWatch, Load Balancing | 🚧 In Progress |
-| 07 | Terraform  | Infrastructure as Code                                     | 🚧 In Progress |
-| 08 | CI/CD      | GitHub Actions and deployment pipelines                    | ⏳ Coming Soon  |
+| 06 | AWS        | EC2, VPC, IAM, Security Groups, CloudWatch, Load Balancing | ✅ Complete     |
+| 07 | Terraform  | Infrastructure as Code                                     | ✅ Complete     |
+| 08 | CI/CD      | GitHub Actions and deployment pipelines                    | ✅ Complete     |
 | 09 | Kubernetes | Container orchestration                                    | ⏳ Coming Soon  |
 
 ---
